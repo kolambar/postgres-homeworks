@@ -13,7 +13,7 @@ def main():
     params = config()
     conn = None
 
-    #create_database(params, db_name)
+    create_database(params, db_name)
     print(f"БД {db_name} успешно создана")
 
     params.update({'dbname': db_name})
@@ -55,7 +55,7 @@ def create_database(params, db_name) -> None:
 
 def execute_sql_script(cur, script_file) -> None:
     """Выполняет скрипт из файла для заполнения БД данными."""
-    with open(script_file) as file:
+    with open(script_file, encoding='UTF-8') as file:
         data = file.read()
         cur.execute(data)
 
